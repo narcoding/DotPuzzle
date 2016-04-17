@@ -64,7 +64,7 @@ public class BolumAdapter extends BaseAdapter {
         TextView txtBolum =  (TextView) pnlItem.findViewById(R.id.txtBolum);
 
         txtBolumNo.setText((position + 1) + "");
-        txtBolum.setText("Bölüm");
+        txtBolum.setText("Level");
 
         return pnlItem;
     }

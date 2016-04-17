@@ -6,6 +6,29 @@
     android:id="@+id/pnlOyun"
     tools:context="com.narcoding.dotpuzzle.Oyun">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/frameLayout"
+        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:id="@+id/imgSure"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/txtSure"
+            android:textSize="20dp"
+            android:textColor="@color/beyaz"/>
+    </RelativeLayout>
+
     <FrameLayout
 
         android:layout_width="wrap_content"
@@ -37,19 +60,12 @@
         android:layout_below="@+id/frameLayout"
         android:layout_centerHorizontal="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tıklama sayısı: 0"
-            android:id="@+id/textView"/>
-
-
-        <Button
+        <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/geri_butonu"
+            android:background="@drawable/geri"
             android:layout_gravity="center"
-            android:id="@+id/button"/>
+            android:id="@+id/btnGeriO"/>
 
     </LinearLayout>
 

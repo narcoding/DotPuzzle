@@ -17,8 +17,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnClassic"
-                android:background="@drawable/button_giris"/>
+                android:id="@+id/btnClassic"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,7 +42,6 @@
             <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_giris"
             android:id="@+id/btnArcade" />
 
             <TextView

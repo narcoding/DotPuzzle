@@ -8,8 +8,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ public class Arcade extends AppCompatActivity {
     RelativeLayout pnlArcade;
 
     Adapter adp;
-    GridView gv;
+    GridView gridViewA;
 
 
     //img sayısı
@@ -31,12 +32,13 @@ public class Arcade extends AppCompatActivity {
     int[] imgs;
 
 
-
-    TextView textView;
-    Button btn;
+    TextView txtSureA;
+    ImageButton btnGeri;
+    ImageView imgSureA;
 
     int i=1;
     int a;
+
 
     private int[] ImgListGetir(int len){
 
@@ -127,7 +129,7 @@ public class Arcade extends AppCompatActivity {
             }
         }
 
-        gv.setAdapter(adp);
+        gridViewA.setAdapter(adp);
     }
 
 
@@ -135,23 +137,20 @@ public class Arcade extends AppCompatActivity {
 
         pnlArcade= (RelativeLayout) findViewById(R.id.pnlArcade);
         pnlArcade.setBackgroundResource(R.drawable.zemin);
-
+        btnGeri= (ImageButton) findViewById(R.id.btnGeriA);
+        btnGeri.setBackgroundResource(R.drawable.geri);
+        imgSureA= (ImageView) findViewById(R.id.imgSureA);
+        imgSureA.setBackgroundResource(R.drawable.sure);
         imgs=ImgListGetir(length);
-
-        btn= (Button) findViewById(R.id.button);
-
-        gv= (GridView) findViewById(R.id.gridView);
-
-
-        gv.setNumColumns((int) Math.sqrt(imgs.length));
-        //gv.setColumnWidth((int) (Math.sqrt(imgs.length)));
-        gv.setColumnWidth((int) (imgs.length ));
+        gridViewA= (GridView) findViewById(R.id.gridViewA);
+        gridViewA.setNumColumns((int) Math.sqrt(imgs.length));
+        gridViewA.setColumnWidth((int) (imgs.length ));
 
 
-        textView= (TextView) findViewById(R.id.textView);
+        txtSureA= (TextView) findViewById(R.id.txtSureA);
 
         adp=new Adapter(this,imgs);
-        gv.setAdapter(adp);
+        gridViewA.setAdapter(adp);
 
 
     }
@@ -168,14 +167,14 @@ public class Arcade extends AppCompatActivity {
             a = intent.getIntExtra("bolum", 1);
         }else {a=1;}
 
-        setTitle(a + ".Bölüm");
+        setTitle("Level "+a);
 
 
         init();
-        textView.setText("Kalan hamle sayısı: " + a);
+        txtSureA.setText(a+"");
 
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnGeri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -190,16 +189,16 @@ public class Arcade extends AppCompatActivity {
         RandomBolumOlustur(a);
 
 
-        gv.setAdapter(adp);
+        gridViewA.setAdapter(adp);
 
 
-        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridViewA.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
 
                 int hmlsys = a - i;
 
-                textView.setText("Kalan hamle sayısı: " + hmlsys);
+                txtSureA.setText(hmlsys+"");
                 i++;
 
 
@@ -229,7 +228,7 @@ public class Arcade extends AppCompatActivity {
                 for (int sayi : imgdizi) {
                     RenkDegistir(sayi - 1);
                 }
-                gv.setAdapter(adp);
+                gridViewA.setAdapter(adp);
 
                 boolean holder = true;
 
@@ -241,17 +240,27 @@ public class Arcade extends AppCompatActivity {
 
 
                 if (holder) {
-                    Toast.makeText(Arcade.this, a + ". BÖLÜM GEÇİLDİ!", Toast.LENGTH_LONG).show();
+                    if(a==12){
+                        Toast.makeText(Arcade.this,  "GREAT! HEIGHT SCORE :"+ a, Toast.LENGTH_LONG).show();
 
-                    Intent intent = new Intent(Arcade.this, Arcade.class);
-                    intent.putExtra("bolum", a + 1);
+                        Intent intent = new Intent(Arcade.this, OyunSec.class);
+                        intent.putExtra("bolum", a + 1);
 
-                    Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.animation, R.anim.animation2).toBundle();
-                    startActivity(intent, bundle);
+                        Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
+                        startActivity(intent, bundle);
+                    }else {
+                        Toast.makeText(Arcade.this, "LEVEL " + a + " COMPLETED!", Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent(Arcade.this, Arcade.class);
+                        intent.putExtra("bolum", a + 1);
+
+                        Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.animation, R.anim.animation2).toBundle();
+                        startActivity(intent, bundle);
+                    }
 
                 } else if (hmlsys == 0) {
 
-                    Toast.makeText(Arcade.this, a + ". BÖLÜM GEÇİLEMEDİ!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Arcade.this, "LEVEL " + a + " FAILED!", Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(Arcade.this, OyunSec.class);
 

@@ -10,8 +10,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,12 +37,14 @@ public class Oyun extends AppCompatActivity {
     RelativeLayout pnlOyun;
 
 
-    private TextView textView;
-    Button btn;
+    TextView txtSure;
+    ImageButton btnGeri;
+    ImageView imgSure;
 
     int l=0;
     int i=1;
     int a=1;
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -211,12 +214,15 @@ public class Oyun extends AppCompatActivity {
     private void init(){
         pnlOyun= (RelativeLayout) findViewById(R.id.pnlOyun);
         pnlOyun.setBackgroundResource(R.drawable.zemin);
+        btnGeri= (ImageButton) findViewById(R.id.btnGeriO);
+        btnGeri.setBackgroundResource(R.drawable.geri);
+        imgSure= (ImageView) findViewById(R.id.imgSure);
+        imgSure.setBackgroundResource(R.drawable.sure);
         imgs=ImgListGetir(length);
-        btn= (Button) findViewById(R.id.button);
         gv= (GridView) findViewById(R.id.gridView);
         gv.setNumColumns((int) Math.sqrt(imgs.length));
         gv.setColumnWidth((int) (Math.sqrt(imgs.length)));
-        textView= (TextView) findViewById(R.id.textView);
+        txtSure= (TextView) findViewById(R.id.txtSure);
         adp=new Adapter(this,imgs);
         gv.setAdapter(adp);
 
@@ -234,11 +240,11 @@ public class Oyun extends AppCompatActivity {
             a=intent.getIntExtra("bolum",1);
         }else {
             a=1;}
-        setTitle(a+". Bölüm");
+        setTitle("Level "+a);
 
         init();
-        textView.setText("Kalan hamle sayısı: "+a);
-        btn.setOnClickListener(new View.OnClickListener() {
+        txtSure.setText(a+"");
+        btnGeri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Oyun.this, MainActivity.class);
@@ -264,7 +270,7 @@ public class Oyun extends AppCompatActivity {
 
                 int hamlesayisi=a-i;
 
-                textView.setText("Kalan hamle sayısı: " + hamlesayisi);
+                txtSure.setText(hamlesayisi+"");
                 i++;
 
 
@@ -306,19 +312,28 @@ public class Oyun extends AppCompatActivity {
 
 
                 if (holder) {
+                    if(a==12){
+                        Toast.makeText(Oyun.this,  "GREAT!", Toast.LENGTH_LONG).show();
 
-                    Toast.makeText(Oyun.this, a + ". BÖLÜM GEÇİLDİ!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Oyun.this, MainActivity.class);
 
-                    Intent intent = new Intent(Oyun.this, MainActivity.class);
+                        Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
+                        startActivity(intent, bundle);
+                    }else {
 
-                    Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
-                    startActivity(intent, bundle);
+                        Toast.makeText(Oyun.this, "LEVEL " + a + " COMPLETED!", Toast.LENGTH_SHORT).show();
 
-                    BolumBilgisiKaydet(a);
+                        Intent intent = new Intent(Oyun.this, MainActivity.class);
+
+                        Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
+                        startActivity(intent, bundle);
+
+                        BolumBilgisiKaydet(a);
+                    }
 
                 }
                 else if(hamlesayisi==0){
-                    Toast.makeText(Oyun.this,a+ ". BÖLÜM GEÇİLEMEDİ!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Oyun.this,"LEVEL " + a + " FAILED!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Oyun.this, MainActivity.class);
                     Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
                     startActivity(intent, bundle);

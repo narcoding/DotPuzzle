@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".Oyun" />
         <activity android:name=".OyunSec" />
-        <activity android:name=".Arcade"></activity>
+        <activity android:name=".Arcade"/>
     </application>
 
 </manifest>
