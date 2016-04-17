@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DotPuzzle</string>
+    <string name="classic">Classic</string>
+    <string name="arcade">Arcade</string>
 </resources>

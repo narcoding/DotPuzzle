@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +27,13 @@ import java.util.Random;
 public class Oyun extends AppCompatActivity {
 
 
-    private Bundle extras=null;
     Adapter adp;
     GridView gv;
     //img sayısı
     int length=25;
     int[] imgs;
+
+    RelativeLayout pnlOyun;
 
 
     private TextView textView;
@@ -207,6 +209,8 @@ public class Oyun extends AppCompatActivity {
 
 
     private void init(){
+        pnlOyun= (RelativeLayout) findViewById(R.id.pnlOyun);
+        pnlOyun.setBackgroundResource(R.drawable.zemin);
         imgs=ImgListGetir(length);
         btn= (Button) findViewById(R.id.button);
         gv= (GridView) findViewById(R.id.gridView);
@@ -215,6 +219,7 @@ public class Oyun extends AppCompatActivity {
         textView= (TextView) findViewById(R.id.textView);
         adp=new Adapter(this,imgs);
         gv.setAdapter(adp);
+
     }
 
 
