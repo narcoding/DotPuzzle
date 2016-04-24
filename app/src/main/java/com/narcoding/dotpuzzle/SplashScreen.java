@@ -41,6 +41,8 @@ public class SplashScreen extends Activity {
                     Intent intent = new Intent();
                     intent.setClass(getApplicationContext(), OyunSec.class);
                     startActivity(intent);
+                    finish();
+
 
                 }
 

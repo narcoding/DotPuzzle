@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private GridView pnlGrid;
     private Bolumler bolumler;
     private BolumAdapter controller;
+    private RelativeLayout pnlmain;
 
     private void init(){
         this.getSharedPreferences("YOUR_PREFS", 0).edit().clear().commit();
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         bolumler = new Bolumler(this);
         controller = new BolumAdapter(MainActivity.this,bolumler);
         pnlGrid.setAdapter(controller);
+        pnlmain= (RelativeLayout) findViewById(R.id.pnlmain);
+        pnlmain.setBackgroundResource(R.drawable.zemin);
     }
 
     private void registerhandle(){
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.animation, R.anim.animation2).toBundle();
                     intent.putExtra("bolum", position + 1);
                     startActivity(intent, bundle);
+                    finish();
                 }
             }
         });

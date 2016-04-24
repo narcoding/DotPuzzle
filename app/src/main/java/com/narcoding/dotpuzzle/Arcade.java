@@ -22,7 +22,6 @@ import java.util.Random;
 public class Arcade extends AppCompatActivity {
 
     RelativeLayout pnlArcade;
-
     Adapter adp;
     GridView gridViewA;
 
@@ -34,6 +33,7 @@ public class Arcade extends AppCompatActivity {
 
     TextView txtSureA;
     ImageButton btnGeri;
+    ImageButton btnRestartA;
     ImageView imgSureA;
 
     int i=1;
@@ -139,6 +139,8 @@ public class Arcade extends AppCompatActivity {
         pnlArcade.setBackgroundResource(R.drawable.zemin);
         btnGeri= (ImageButton) findViewById(R.id.btnGeriA);
         btnGeri.setBackgroundResource(R.drawable.geri);
+        btnRestartA= (ImageButton) findViewById(R.id.btnRestartA);
+        btnRestartA.setBackgroundResource(R.drawable.restart);
         imgSureA= (ImageView) findViewById(R.id.imgSureA);
         imgSureA.setBackgroundResource(R.drawable.sure);
         imgs=ImgListGetir(length);
@@ -171,7 +173,15 @@ public class Arcade extends AppCompatActivity {
 
 
         init();
-        txtSureA.setText(a+"");
+        txtSureA.setText(a + "");
+
+        btnRestartA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
 
 
         btnGeri.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +191,7 @@ public class Arcade extends AppCompatActivity {
                 Intent intent = new Intent(Arcade.this, OyunSec.class);
                 Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
                 startActivity(intent, bundle);
+                finish();
 
             }
         });
@@ -248,6 +259,7 @@ public class Arcade extends AppCompatActivity {
 
                         Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
                         startActivity(intent, bundle);
+                        finish();
                     }else {
                         Toast.makeText(Arcade.this, "LEVEL " + a + " COMPLETED!", Toast.LENGTH_LONG).show();
 
@@ -256,6 +268,7 @@ public class Arcade extends AppCompatActivity {
 
                         Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.animation, R.anim.animation2).toBundle();
                         startActivity(intent, bundle);
+                        finish();
                     }
 
                 } else if (hmlsys == 0) {
@@ -266,6 +279,7 @@ public class Arcade extends AppCompatActivity {
 
                     Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
                     startActivity(intent, bundle);
+                    finish();
 
                 }
 

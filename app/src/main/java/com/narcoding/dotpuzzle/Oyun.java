@@ -39,6 +39,7 @@ public class Oyun extends AppCompatActivity {
 
     TextView txtSure;
     ImageButton btnGeri;
+    ImageButton btnRestartO;
     ImageView imgSure;
 
     int l=0;
@@ -216,6 +217,8 @@ public class Oyun extends AppCompatActivity {
         pnlOyun.setBackgroundResource(R.drawable.zemin);
         btnGeri= (ImageButton) findViewById(R.id.btnGeriO);
         btnGeri.setBackgroundResource(R.drawable.geri);
+        btnRestartO= (ImageButton) findViewById(R.id.btnRestartO);
+        btnRestartO.setBackgroundResource(R.drawable.restart);
         imgSure= (ImageView) findViewById(R.id.imgSure);
         imgSure.setBackgroundResource(R.drawable.sure);
         imgs=ImgListGetir(length);
@@ -243,13 +246,23 @@ public class Oyun extends AppCompatActivity {
         setTitle("Level "+a);
 
         init();
-        txtSure.setText(a+"");
+        txtSure.setText(a + "");
+
+        btnRestartO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
         btnGeri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Oyun.this, MainActivity.class);
                 Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
                 startActivity(intent, bundle);
+                finish();
             }
         });
 
@@ -319,6 +332,7 @@ public class Oyun extends AppCompatActivity {
 
                         Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
                         startActivity(intent, bundle);
+                        finish();
                     }else {
 
                         Toast.makeText(Oyun.this, "LEVEL " + a + " COMPLETED!", Toast.LENGTH_SHORT).show();
@@ -329,6 +343,7 @@ public class Oyun extends AppCompatActivity {
                         startActivity(intent, bundle);
 
                         BolumBilgisiKaydet(a);
+                        finish();
                     }
 
                 }
@@ -337,6 +352,7 @@ public class Oyun extends AppCompatActivity {
                     Intent intent = new Intent(Oyun.this, MainActivity.class);
                     Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
                     startActivity(intent, bundle);
+                    finish();
 
                 }
 

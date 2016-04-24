@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * Created by Naim on 17.04.2016.
@@ -16,6 +17,8 @@ public class OyunSec extends AppCompatActivity {
 
     LinearLayout pnlOyunSec;
     ImageButton btnClassic,btnArcade;
+    TextView txtRecord;
+    int r=0;
 
     private void init(){
         pnlOyunSec= (LinearLayout) findViewById(R.id.pnlOyunSec);
@@ -24,6 +27,8 @@ public class OyunSec extends AppCompatActivity {
         btnArcade= (ImageButton) findViewById(R.id.btnArcade);
         btnClassic.setBackgroundResource(R.drawable.button_giris);
         btnArcade.setBackgroundResource(R.drawable.button_giris);
+        txtRecord= (TextView) findViewById(R.id.txtRecord);
+        txtRecord.setText("Record: "+r);
 
     }
 
@@ -34,6 +39,7 @@ public class OyunSec extends AppCompatActivity {
                 Intent intent=new Intent(OyunSec.this,MainActivity.class);
                 Bundle bundle= ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.animation, R.anim.animation2).toBundle();
                 startActivity(intent,bundle);
+                finish();
 
             }
         });
@@ -46,6 +52,7 @@ public class OyunSec extends AppCompatActivity {
                 Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.animation, R.anim.animation2).toBundle();
                 intent.putExtra("bolum", 1);
                 startActivity(intent, bundle);
+                finish();
 
             }
         });
@@ -58,6 +65,7 @@ public class OyunSec extends AppCompatActivity {
         init();
         OnClick();
         setTitle("DotPuzzle");
+
     }
 
 

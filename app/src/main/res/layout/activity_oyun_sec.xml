@@ -25,8 +25,6 @@
                 android:text="@string/classic"
                 android:textSize="50dp"
                 android:textColor="#FFFFFF"
-                android:layout_x="105dp"
-                android:layout_y="57dp"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
@@ -44,18 +42,32 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnArcade" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/arcade"
                 android:textSize="50dp"
                 android:gravity="center"
                 android:foregroundGravity="center"
+                android:textColor="#FFFFFF"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/record"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:foregroundGravity="center"
                 android:textColor="#FFFFFF"
-                android:layout_x="113dp"
-                android:layout_y="64dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+                android:id="@+id/txtRecord"/>
+        </LinearLayout>
+
+
 
         </RelativeLayout>
 
