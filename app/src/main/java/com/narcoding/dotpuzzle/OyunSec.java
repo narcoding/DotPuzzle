@@ -2,7 +2,9 @@ package com.narcoding.dotpuzzle;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -28,7 +30,13 @@ public class OyunSec extends AppCompatActivity {
         btnClassic.setBackgroundResource(R.drawable.button_giris);
         btnArcade.setBackgroundResource(R.drawable.button_giris);
         txtRecord= (TextView) findViewById(R.id.txtRecord);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        r= sharedPreferences.getInt("arcsongecilenbolum", 0);
+
         txtRecord.setText("Record: "+r);
+
+
 
     }
 

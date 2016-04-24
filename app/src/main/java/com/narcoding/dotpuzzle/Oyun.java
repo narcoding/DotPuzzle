@@ -118,7 +118,7 @@ public class Oyun extends AppCompatActivity {
 
     }
 
-    private void RandomBolumOlustur(){
+    private void KayitliBolumuOlustur(){
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String replace = sharedPreferences.getString(a+".bolum", "").replace("[", "");
@@ -184,7 +184,7 @@ public class Oyun extends AppCompatActivity {
             }
         }
 
-        gv.setAdapter(adp);
+        //gv.setAdapter(adp);
     }
 
 
@@ -242,8 +242,9 @@ public class Oyun extends AppCompatActivity {
         if(intent.getExtras()!=null){
             a=intent.getIntExtra("bolum",1);
         }else {
-            a=1;}
-        setTitle("Level "+a);
+            a=1;
+        }
+        setTitle("Level " +a);
 
         init();
         txtSure.setText(a + "");
@@ -251,8 +252,12 @@ public class Oyun extends AppCompatActivity {
         btnRestartO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                i = 1;
+                imgs = ImgListGetir(length);
+                KayitliBolumuOlustur();
+                txtSure.setText(a + "");
+                adp = new Adapter(Oyun.this,imgs);
+                gv.setAdapter(adp);
             }
         });
 
@@ -268,11 +273,11 @@ public class Oyun extends AppCompatActivity {
 
 
 
-        RandomBolumOlustur();
-
-
-
+        KayitliBolumuOlustur();
         gv.setAdapter(adp);
+
+
+
 
 
 

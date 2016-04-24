@@ -2,7 +2,9 @@ package com.narcoding.dotpuzzle;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -39,6 +41,21 @@ public class Arcade extends AppCompatActivity {
     int i=1;
     int a;
 
+    public int BolumBilgisiGetir(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        return sharedPreferences.getInt("arcsongecilenbolum", 0);
+    }
+
+
+    public void BolumBilgisiKaydet( int value){
+
+        if ((BolumBilgisiGetir()<value)){
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("arcsongecilenbolum", value);
+            editor.commit();
+        }
+    }
 
     private int[] ImgListGetir(int len){
 
@@ -251,17 +268,10 @@ public class Arcade extends AppCompatActivity {
 
 
                 if (holder) {
-                    if(a==12){
-                        Toast.makeText(Arcade.this,  "GREAT! HEIGHT SCORE :"+ a, Toast.LENGTH_LONG).show();
 
-                        Intent intent = new Intent(Arcade.this, OyunSec.class);
-                        intent.putExtra("bolum", a + 1);
-
-                        Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
-                        startActivity(intent, bundle);
-                        finish();
-                    }else {
                         Toast.makeText(Arcade.this, "LEVEL " + a + " COMPLETED!", Toast.LENGTH_LONG).show();
+
+                        BolumBilgisiKaydet(a);
 
                         Intent intent = new Intent(Arcade.this, Arcade.class);
                         intent.putExtra("bolum", a + 1);
@@ -269,12 +279,14 @@ public class Arcade extends AppCompatActivity {
                         Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.animation, R.anim.animation2).toBundle();
                         startActivity(intent, bundle);
                         finish();
-                    }
 
                 } else if (hmlsys == 0) {
-
-                    Toast.makeText(Arcade.this, "LEVEL " + a + " FAILED!", Toast.LENGTH_LONG).show();
-
+                    if( BolumBilgisiGetir()>a){
+                        Toast.makeText(Arcade.this,  "GREAT! HEIGHT SCORE :" + a, Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(Arcade.this,  "LEVEL " + a + " FAILED", Toast.LENGTH_LONG).show();
+                    }
                     Intent intent = new Intent(Arcade.this, OyunSec.class);
 
                     Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.saga, R.anim.soldan).toBundle();
