@@ -13,6 +13,7 @@ import java.util.Random;
  * Created by Naim on 17.04.2016.
  */
 public class Bolumler {
+    //asd
     public int bolumsayisi=12;
 
 
