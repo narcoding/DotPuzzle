@@ -24,7 +24,7 @@ public class OyunSec extends AppCompatActivity {
 
     private void init(){
         pnlOyunSec= (LinearLayout) findViewById(R.id.pnlOyunSec);
-        pnlOyunSec.setBackgroundResource(R.drawable.zemin);
+        pnlOyunSec.setBackgroundResource(R.drawable.zemin1);
         btnClassic= (ImageButton) findViewById(R.id.btnClassic);
         btnArcade= (ImageButton) findViewById(R.id.btnArcade);
         btnClassic.setBackgroundResource(R.drawable.button_giris);

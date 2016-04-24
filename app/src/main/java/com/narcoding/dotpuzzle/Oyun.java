@@ -78,7 +78,7 @@ public class Oyun extends AppCompatActivity {
         int[] imglist = new int[len];
 
         for(int i=0;i<len;i++){
-            imglist[i]= R.drawable.iki;
+            imglist[i]= R.drawable.p50_bir;
         }
 
         return imglist;
@@ -86,16 +86,16 @@ public class Oyun extends AppCompatActivity {
 
     private void RenkDegistir(int pos){
 
-        if (imgs[pos] == R.drawable.dort) {
-            imgs[pos] = R.drawable.uc;
+        if (imgs[pos] == R.drawable.p50_uc) {
+            imgs[pos] = R.drawable.p50_iki;
 
 
-        } else if (imgs[pos] == R.drawable.uc) {
-            imgs[pos] = R.drawable.iki;
+        } else if (imgs[pos] == R.drawable.p50_iki) {
+            imgs[pos] = R.drawable.p50_bir;
 
 
-        } else if (imgs[pos] == R.drawable.iki) {
-            imgs[pos] = R.drawable.dort;
+        } else if (imgs[pos] == R.drawable.p50_bir) {
+            imgs[pos] = R.drawable.p50_uc;
 
         }
 
@@ -103,16 +103,16 @@ public class Oyun extends AppCompatActivity {
 
     private void RenkDegistirTers(int pos){
 
-        if (imgs[pos] == R.drawable.uc) {
-            imgs[pos] = R.drawable.dort;
+        if (imgs[pos] == R.drawable.p50_iki) {
+            imgs[pos] = R.drawable.p50_uc;
 
 
-        } else if (imgs[pos] == R.drawable.iki) {
-            imgs[pos] = R.drawable.uc;
+        } else if (imgs[pos] == R.drawable.p50_bir) {
+            imgs[pos] = R.drawable.p50_iki;
 
 
-        } else if (imgs[pos] == R.drawable.dort) {
-            imgs[pos] = R.drawable.iki;
+        } else if (imgs[pos] == R.drawable.p50_uc) {
+            imgs[pos] = R.drawable.p50_bir;
 
         }
 
@@ -214,7 +214,7 @@ public class Oyun extends AppCompatActivity {
 
     private void init(){
         pnlOyun= (RelativeLayout) findViewById(R.id.pnlOyun);
-        pnlOyun.setBackgroundResource(R.drawable.zemin);
+        pnlOyun.setBackgroundResource(R.drawable.zemin1);
         btnGeri= (ImageButton) findViewById(R.id.btnGeriO);
         btnGeri.setBackgroundResource(R.drawable.geri);
         btnRestartO= (ImageButton) findViewById(R.id.btnRestartO);
@@ -244,7 +244,7 @@ public class Oyun extends AppCompatActivity {
         }else {
             a=1;
         }
-        setTitle("Level " +a);
+        setTitle("DotPuzzle    Level " +a);
 
         init();
         txtSure.setText(a + "");
@@ -324,7 +324,7 @@ public class Oyun extends AppCompatActivity {
                 boolean holder=true;
 
                 for (int i =0;i<imgs.length;i++){
-                    if(imgs[i]!=R.drawable.iki){holder=false;}
+                    if(imgs[i]!=R.drawable.p50_bir){holder=false;}
                 }
 
 

@@ -14,7 +14,7 @@
 
         <ImageView
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/logo"
+            android:id="@+id/imgLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_x="14dp"
@@ -22,7 +22,7 @@
 
         <ImageView
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/amblem"
+            android:id="@+id/imgAmblem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_x="23dp"

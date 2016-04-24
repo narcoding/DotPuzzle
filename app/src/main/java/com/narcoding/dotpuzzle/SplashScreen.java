@@ -3,6 +3,7 @@ package com.narcoding.dotpuzzle;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 /**
@@ -11,10 +12,15 @@ import android.widget.RelativeLayout;
 public class SplashScreen extends Activity {
 
     RelativeLayout pnlSplash;
+    ImageView imgLogo,imgAmblem;
 
     private void init(){
         pnlSplash= (RelativeLayout) findViewById(R.id.pnlSplash);
-        pnlSplash.setBackgroundResource(R.drawable.zemin);
+        pnlSplash.setBackgroundResource(R.drawable.zemin1);
+        imgLogo= (ImageView) findViewById(R.id.imgLogo);
+        imgLogo.setBackgroundResource(R.drawable.logo);
+        imgAmblem= (ImageView) findViewById(R.id.imgAmblem);
+        imgAmblem.setBackgroundResource(R.drawable.amblem);
     }
 
     @Override

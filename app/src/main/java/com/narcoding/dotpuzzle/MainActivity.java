@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         controller = new BolumAdapter(MainActivity.this,bolumler);
         pnlGrid.setAdapter(controller);
         pnlmain= (RelativeLayout) findViewById(R.id.pnlmain);
-        pnlmain.setBackgroundResource(R.drawable.zemin);
+        pnlmain.setBackgroundResource(R.drawable.zemin1);
     }
 
     private void registerhandle(){

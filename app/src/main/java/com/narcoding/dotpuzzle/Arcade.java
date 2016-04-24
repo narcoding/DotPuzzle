@@ -35,7 +35,6 @@ public class Arcade extends AppCompatActivity {
 
     TextView txtSureA;
     ImageButton btnGeri;
-    ImageButton btnRestartA;
     ImageView imgSureA;
 
     int i=1;
@@ -62,7 +61,7 @@ public class Arcade extends AppCompatActivity {
         int[] imglist = new int[len];
 
         for(int i=0;i<len;i++){
-            imglist[i]=R.drawable.iki;
+            imglist[i]=R.drawable.p50_bir;
         }
 
         return imglist;
@@ -70,16 +69,16 @@ public class Arcade extends AppCompatActivity {
 
     private void RenkDegistir(int pos){
 
-        if (imgs[pos] == R.drawable.dort) {
-            imgs[pos] = R.drawable.uc;
+        if (imgs[pos] == R.drawable.p50_uc) {
+            imgs[pos] = R.drawable.p50_iki;
 
 
-        } else if (imgs[pos] == R.drawable.uc) {
-            imgs[pos] = R.drawable.iki;
+        } else if (imgs[pos] == R.drawable.p50_iki) {
+            imgs[pos] = R.drawable.p50_bir;
 
 
-        } else if (imgs[pos] == R.drawable.iki) {
-            imgs[pos] = R.drawable.dort;
+        } else if (imgs[pos] == R.drawable.p50_bir) {
+            imgs[pos] = R.drawable.p50_uc;
 
         }
 
@@ -87,16 +86,16 @@ public class Arcade extends AppCompatActivity {
 
     private void RenkDegistirTers(int pos){
 
-        if (imgs[pos] == R.drawable.uc) {
-            imgs[pos] = R.drawable.dort;
+        if (imgs[pos] == R.drawable.p50_iki) {
+            imgs[pos] = R.drawable.p50_uc;
 
 
-        } else if (imgs[pos] == R.drawable.iki) {
-            imgs[pos] = R.drawable.uc;
+        } else if (imgs[pos] == R.drawable.p50_bir) {
+            imgs[pos] = R.drawable.p50_iki;
 
 
-        } else if (imgs[pos] == R.drawable.dort) {
-            imgs[pos] = R.drawable.iki;
+        } else if (imgs[pos] == R.drawable.p50_uc) {
+            imgs[pos] = R.drawable.p50_bir;
 
         }
 
@@ -153,11 +152,9 @@ public class Arcade extends AppCompatActivity {
     private void init(){
 
         pnlArcade= (RelativeLayout) findViewById(R.id.pnlArcade);
-        pnlArcade.setBackgroundResource(R.drawable.zemin);
+        pnlArcade.setBackgroundResource(R.drawable.zemin1);
         btnGeri= (ImageButton) findViewById(R.id.btnGeriA);
         btnGeri.setBackgroundResource(R.drawable.geri);
-        btnRestartA= (ImageButton) findViewById(R.id.btnRestartA);
-        btnRestartA.setBackgroundResource(R.drawable.restart);
         imgSureA= (ImageView) findViewById(R.id.imgSureA);
         imgSureA.setBackgroundResource(R.drawable.sure);
         imgs=ImgListGetir(length);
@@ -186,19 +183,11 @@ public class Arcade extends AppCompatActivity {
             a = intent.getIntExtra("bolum", 1);
         }else {a=1;}
 
-        setTitle("Level "+a);
+        setTitle("DotPuzzle    Level " + a);
 
 
         init();
         txtSureA.setText(a + "");
-
-        btnRestartA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            }
-        });
 
 
         btnGeri.setOnClickListener(new View.OnClickListener() {
@@ -261,7 +250,7 @@ public class Arcade extends AppCompatActivity {
                 boolean holder = true;
 
                 for (int i = 0; i < imgs.length; i++) {
-                    if (imgs[i] != R.drawable.iki) {
+                    if (imgs[i] != R.drawable.p50_bir) {
                         holder = false;
                     }
                 }
@@ -295,10 +284,8 @@ public class Arcade extends AppCompatActivity {
 
                 }
 
-
             }
         });
-
 
     }
 
