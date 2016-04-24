@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/frameLayout"
+        android:layout_above="@+id/frameLayoutA"
         >
         <ImageView
             android:layout_width="50dp"
@@ -31,11 +31,11 @@
 
     <FrameLayout
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="204dp"
+        android:layout_height="204dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:id="@+id/frameLayout">
+        android:id="@+id/frameLayoutA">
 
         <GridView
             android:layout_width="204dp"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/frameLayout"
+        android:layout_below="@+id/frameLayoutA"
         android:layout_centerHorizontal="true"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="false"

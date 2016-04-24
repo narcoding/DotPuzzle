@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ public class Arcade extends AppCompatActivity {
     RelativeLayout pnlArcade;
     Adapter adp;
     GridView gridViewA;
+    FrameLayout frameLayoutA;
 
 
     //img sayısı
@@ -158,7 +160,11 @@ public class Arcade extends AppCompatActivity {
         imgSureA= (ImageView) findViewById(R.id.imgSureA);
         imgSureA.setBackgroundResource(R.drawable.sure);
         imgs=ImgListGetir(length);
-        gridViewA= (GridView) findViewById(R.id.gridViewA);
+        gridViewA=new GridView(this);
+        frameLayoutA= (FrameLayout) findViewById(R.id.frameLayoutA);
+        frameLayoutA.addView(gridViewA);
+        //gridViewA= (GridView) findViewById(R.id.gridViewA);
+
         gridViewA.setNumColumns((int) Math.sqrt(imgs.length));
         gridViewA.setColumnWidth((int) (imgs.length ));
 

@@ -13,7 +13,7 @@ import java.util.Random;
  * Created by Naim on 17.04.2016.
  */
 public class Bolumler {
-    public int bolumsayisi=12;
+    public int bolumsayisi=24;
 
 
     private Context context;
@@ -38,7 +38,7 @@ public class Bolumler {
         }
         else{
 
-            for(int i=1;i<12;i++){
+            for(int i=1;i<bolumsayisi+1;i++){
                 // List<Integer> y=new ArrayList<Integer>();
 
                 Integer[] y = new Integer[i];

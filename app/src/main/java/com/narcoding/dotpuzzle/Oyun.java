@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ public class Oyun extends AppCompatActivity {
 
     Adapter adp;
     GridView gv;
+    FrameLayout frameLayout;
     //img sayısı
     int length=25;
     int[] imgs;
@@ -67,7 +69,7 @@ public class Oyun extends AppCompatActivity {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("songecilenbolum", value);
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -222,7 +224,11 @@ public class Oyun extends AppCompatActivity {
         imgSure= (ImageView) findViewById(R.id.imgSure);
         imgSure.setBackgroundResource(R.drawable.sure);
         imgs=ImgListGetir(length);
-        gv= (GridView) findViewById(R.id.gridView);
+        frameLayout= (FrameLayout) findViewById(R.id.frameLayout);
+        //gv= (GridView) findViewById(R.id.gridView);
+        gv=new GridView(this);
+        frameLayout.addView(gv);
+
         gv.setNumColumns((int) Math.sqrt(imgs.length));
         gv.setColumnWidth((int) (Math.sqrt(imgs.length)));
         txtSure= (TextView) findViewById(R.id.txtSure);
@@ -330,7 +336,7 @@ public class Oyun extends AppCompatActivity {
 
 
                 if (holder) {
-                    if(a==12){
+                    if(a==24){
                         Toast.makeText(Oyun.this,  "GREAT!", Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(Oyun.this, MainActivity.class);
